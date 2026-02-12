@@ -1,15 +1,118 @@
-.ominous {
-  background-color: black;
-  font-family: "Lucida Console", "Courier New", monospace; 
-  color: white;
+body {
+  margin: 0;
+  background: black;
 }
 
-.cursor {
-  display: inline-block;
-  margin-left: 2px;
+/* centers elements */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* gives a typewriter effect to text */
+.typewriter {
+  font-size: 24px;
+  color: white;
+  animation: textFlicker 0.12s infinite alternate;
+}
+
+/* changes the opacity of text to create a flickering effect */
+@keyframes textFlicker {
+  from { opacity: 1; }
+  to   { opacity: 0.92; }
+}
+
+/* blinking red cursor after typewriter text */
+.typewriter::after {
+  content: "|";
+  color: red;
   animation: blink 1s steps(1) infinite;
 }
 
+/* blinks the cursor by toggling its opacity */
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* bezel overlay */
+.bezel {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* screen dimensions and effects */
+.crt-screen {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: auto;
+  filter: blur(0.48px);
+  image-rendering: pixelated;
+}
+
+/* scanlines */
+.crt-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.03) 0,
+    rgba(255,255,255,0.03) 2px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* screen flickering */
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, rgba(255, 255, 255, 0.02) 100%);
+  animation: flicker 0.25s infinite alternate;
+}
+
+/* animates the flickering effect by changing the opacity of the overlay */
+@keyframes flicker {
+  0% { opacity: 0.85; }
+  5% { opacity: 0.4; }
+  10% { opacity: 0.9; }
+  15% { opacity: 0.3; }
+  20% { opacity: 0.95; }
+  25% { opacity: 0.6; }
+  30% { opacity: 1; }
+  100% { opacity: 0.9; }
+}
+
+/* moving horizontal lines to simulate a rolling effect on the CRT screen */
+.crt-roll {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255,255,255,0.015) 50%,
+    transparent 100%
+  );
+
+  animation: roll var(--dur, 3s) infinite steps(var(--steps, 7));
+}
+
+/* second rolling layer with different speed and steps for a more dynamic effect */
+.crt-roll2 {
+  --dur: 5s;
+  --steps: 9;
+}
+
+/* animates the rolling effect by translating the background vertically */
+@keyframes roll {
+  from { transform: translateY(-120%); }
+  to   { transform: translateY(120%); }
 }
