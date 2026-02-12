@@ -15,7 +15,10 @@ body {
 .typewriter {
   font-size: 24px;
   color: white;
+  transform: rotateX(20deg);
   animation: textFlicker 0.12s infinite alternate;
+  animation: hideMsg 0s forwards;
+  animation-delay: 8s;
 }
 
 /* changes the opacity of text to create a flickering effect */
@@ -28,6 +31,7 @@ body {
 .typewriter::after {
   content: "|";
   color: red;
+  transform: rotateX(20deg);
   animation: blink 1s steps(1) infinite;
 }
 
@@ -43,6 +47,7 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
+  z-index: 1;
 }
 
 
@@ -115,4 +120,41 @@ body {
 @keyframes roll {
   from { transform: translateY(-120%); }
   to   { transform: translateY(120%); }
+}
+
+/* mail message displayed after the initial typewriter text */
+#mail-msg {
+  font-size: 40px;
+  color: white;
+  animation: textFlicker 0.12s infinite alternate;
+  animation: showMsg 0s forwards;
+  animation-delay: 8s;
+  opacity: 0;
+  position: absolute;
+  top: 215px;
+  left: 50%;
+  transform: rotateX(35deg);
+  transform: translateX(-50%);
+}
+
+/* mailbox displayed after the initial typewriter text */
+#mailbox {
+  animation: showMsg 0s forwards;
+  animation-delay: 8s;
+  opacity: 0;
+  position: absolute;
+  top: 250px;
+  left: 48%;
+  transform: rotateX(35deg);
+  transform: translateX(-50%);
+  max-width: 200px;
+  height: auto;
+}
+
+@keyframes showMsg {
+  to { opacity: 1; }
+}
+
+@keyframes hideMsg {
+  to { opacity: 0; }
 }
