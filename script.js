@@ -21,3 +21,15 @@ document.addEventListener("DOMContentLoaded", () => { //wait for the DOM to full
     setTimeout(() => typewriter(el, text, speed), 3000); //start the typewriter effect after a 3-second delay
   });
 });
+
+document.addEventListener("click", () => { //add a click event listener to the entire document
+  const wallpaper = document.getElementById("wallpaper"); //get the wallpaper element
+  const mailbox = document.getElementById("mailbox"); //get the mailbox element
+  const mailMsg = document.getElementById("mail-msg"); //get the mail message element
+  
+  if(getComputedStyle(mailbox).opacity == "1") { //check if the mailbox is currently visible
+    setTimeout(() => wallpaper.classList.add("show"), 500); //if it is, show the wallpaper
+    setTimeout(() => mailMsg.classList.add("hide"), 500); //also hide the mail message
+    setTimeout(() => mailbox.classList.add("hide"), 500); //and hide the mailbox
+  }
+});
