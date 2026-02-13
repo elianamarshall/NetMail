@@ -7,14 +7,21 @@
   </head>
 
   <body>
-    <img src="bezel.png" class="bezel" alt="">
+    <img src="imgs/bezel.png" class="bezel" alt="">
     <div class="center crt-screen">
       <img src="imgs/wallpaper.png" id="wallpaper" alt="">
       <div class="crt-roll"></div>
       <div class="crt-roll crt-roll2"></div>
-      <div class="typewriter" data-text="Where am I?" data-speed="80"></div>
+
+      <div class="typewriter" id = "start-text" ></div>
+
       <div id="mail-msg">You  Have  Mail</div>
       <img src="imgs/mailbox.gif" id="mailbox" alt="">
+
+      <div id="chat">Mist: It's been so long since I've had someone to talk to. Do you want to hear a fun fact? Yes or no?</div>
+      <textarea id="user-input" onkeypress="userType(event);"></textarea>
+
+      <div class="typewriter" id = "end-text"></div>
     </div>
   </body>
 
