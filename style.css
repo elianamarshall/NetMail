@@ -18,7 +18,7 @@ body {
   transform: rotateX(20deg);
   animation: textFlicker 0.12s infinite alternate;
   animation: hideMsg 0s forwards;
-  animation-delay: 8s;
+  animation-delay: 6s;
 }
 
 /* changes the opacity of text to create a flickering effect */
@@ -75,11 +75,8 @@ body {
       rgba(255,255,255,0.03) 2px,
       transparent 1px,
       transparent 3px
-    ),
-    radial-gradient(circle at center,
-      rgba(255,255,255,0.03),
-      rgba(255,255,255,0.02)
     );
+
   animation: flicker 0.25s infinite alternate;
 }
 
@@ -92,10 +89,10 @@ body {
 
   background: radial-gradient(
     circle at center,
-    rgba(0, 75, 255, 0.04) 0%,
-    rgba(0, 75, 255, 0.03) 40%,
-    rgba(0, 75, 255, 0.02) 70%,
-    rgba(0, 75, 255, 0.01) 100%
+    rgba(75, 150, 255, 0.01) 0%,
+    rgba(75, 150, 255, 0.0075) 40%,
+    rgba(75, 150, 255, 0.005) 70%,
+    rgba(75, 150, 255, 0.0025) 100%
   );
 }
 
@@ -143,7 +140,7 @@ body {
   color: white;
   animation: textFlicker 0.12s infinite alternate;
   animation: showMsg 0s forwards;
-  animation-delay: 8s;
+  animation-delay: 6s;
   opacity: 0;
   position: absolute;
   top: 215px;
@@ -159,7 +156,7 @@ body {
 /* mailbox displayed after the initial typewriter text */
 #mailbox {
   animation: showMsg 0s forwards;
-  animation-delay: 8s;
+  animation-delay: 6s;
   opacity: 0;
   position: absolute;
   top: 250px;
