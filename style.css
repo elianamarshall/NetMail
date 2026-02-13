@@ -29,7 +29,6 @@ body {
 .typewriter::after {
   content: "|";
   color: red;
-  transform: rotateX(20deg);
   animation: blink 1s steps(1) infinite;
 }
 
@@ -66,7 +65,6 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  pointer-events: none;
 
   background:
     repeating-linear-gradient(
@@ -85,7 +83,6 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  pointer-events: none;
 
   background: radial-gradient(
     circle at center,
@@ -138,76 +135,81 @@ body {
 #mail-msg {
   font-size: 40px;
   color: white;
-  animation: textFlicker 0.12s infinite alternate;
-  animation: showMsg 0s forwards;
-  animation-delay: 6s;
   opacity: 0;
   position: absolute;
   top: 35%;
-  left: 50%;
-  transform: rotateX(35deg);
-  transform: translateX(-50%);
+  left: 41%;
+  transform: rotateX(20deg);
+  animation: 
+    textFlicker 0.12s infinite alternate,
+    showMsg 0s forwards;
+  animation-delay: 6s;
 }
 
+/* hide the mail message after the screen is clicked */
 #mail-msg.hide {
   animation: hideMsg 0s forwards;
 }
 
 /* mailbox displayed after the initial typewriter text */
 #mailbox {
-  animation: showMsg 0s forwards;
-  animation-delay: 6s;
   opacity: 0;
   position: absolute;
   top: 40%;
-  left: 48%;
-  transform: rotateX(35deg);
-  transform: translateX(-50%);
+  left: 41%;
   max-width: 200px;
   height: auto;
+  transform: rotateX(20deg);
+  animation: showMsg 0s forwards;
+  animation-delay: 6s;
 }
 
+/* hide the mailbox after the screen is clicked */
 #mailbox.hide {
   animation: hideMsg 0s forwards;
 }
 
-/* wallpaper displayed after mailbox */
+/* show a message by setting its opacity to 1, making it visible */
+@keyframes showMsg {
+  to { opacity: 1; }
+}
+
+/* hide a message by setting its opacity to 0, making it invisible */
+@keyframes hideMsg {
+  to { opacity: 0; }
+}
+
+/* wallpaper displayed after the screen is clicked */
 #wallpaper {
-  transition: opacity 0s ease;
   opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
+/* show wallpaper by setting its opacity to 1, making it visible */
 #wallpaper.show {
   opacity: 1;
 }
 
-@keyframes showMsg {
-  to { opacity: 1; }
-}
-
-@keyframes hideMsg {
-  to { opacity: 0; }
-}
-
-#chat {
+/* chat log to simulate a chat system */
+#chat-log {
   position: absolute;
   width: 25%;
   height: 30%;
-  overflow-y: auto;
   top: 52%;
   left: 36.5%;
-  transition:50 opacity 0s ease;
+  overflow-y: auto;
   opacity: 0;
   pointer-events: auto;
 }
 
-#chat.show {
+/* show chat log by setting its opacity to 1, making it visible */
+#chat-log.show {
   opacity: 1;
 }
 
+/* user input area to write a message */
 #user-input {
   border: 1px solid black;
   position: absolute;
@@ -215,38 +217,32 @@ body {
   height: 4.5%;
   top: 84%;
   left: 36.5%;
-  transition: opacity 0s ease;
   opacity: 0;
   pointer-events: auto;
 }
 
+/* show the user input by setting its opacity to 1, making it visible */
 #user-input.show {
   opacity: 1;
 }
 
-#start-text {
+/* the starting message should be visible */
+#start-msg {
   opacity: 1;
 }
 
-#start-text.hide {
+/* hide the starting message by setting its opacity to 0, making it invisible */
+#start-msg.hide {
   animation: hideMsg 0s forwards;
 }
 
-#end-text {
-  opacity: 0;
+/* the ending message should not be visible */
+#end-msg {
   position: absolute;
-  top: 50%;      /* adjust as needed */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display:none;
+  display: none;
 }
 
-#end-text.show {
-  opacity: 1;
+/* display the ending message inline when it should be visible */
+#end-msg.show {
   display: inline;
-}
-
-.typewriter.hide::after {
-  content: "";       /* remove cursor when hidden */
-  animation: none;   /* stop blinking animation */
 }
