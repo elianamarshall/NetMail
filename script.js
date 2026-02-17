@@ -190,6 +190,8 @@ function respondToInput(txt) {
         setTimeout(() => addToLog("Mist: It was really nice chatting with you. I hope we can talk again soon..."), 4000);
         endSequence();
         msgIdx = 10;
+      } else {
+        setTimeout(() => addToLog("Mist: I'm not sure I understand. Is that a yes or a no?"), 4000);
       } break;
     
     case 9: 
